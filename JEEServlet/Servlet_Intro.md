@@ -62,12 +62,9 @@ Tomcat extracts your WAR and loads the servlets into Catalina, the servlet conta
 Client → HTTP Request → Tomcat → Servlet Container → Servlet → Response → Client
 
 **7️⃣ Important Servlet Classes**
-Component	Description
-HttpServlet	Base class for all Servlets
-doGet()	Handles GET requests
-doPost()	Handles POST requests
-ServletRequest	Contains request data
-ServletResponse	Used to send response to client
+
+<img width="378" height="247" alt="image" src="https://github.com/user-attachments/assets/03e554ab-939f-43f5-8255-8600d35d0778" />
+
 
 
 **Full Tomcat Internal Request Flow (Simplified)**
