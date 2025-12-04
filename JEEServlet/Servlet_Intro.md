@@ -70,7 +70,7 @@ ServletRequest	Contains request data
 ServletResponse	Used to send response to client
 
 
-**🏗️ Full Tomcat Internal Request Flow (Simplified)**
+**Full Tomcat Internal Request Flow (Simplified)**
 
                ┌──────────────────────────┐
                │        Client (Browser)   │
