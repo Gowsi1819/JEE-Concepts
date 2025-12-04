@@ -1,9 +1,9 @@
-1️⃣ What is a Servlet?
+**1️⃣ What is a Servlet?**
 
 A Servlet is a Java class that runs on the server.
 It receives HTTP requests, processes them using Java logic (database, validation, business rules), and sends dynamic responses like HTML, JSON, JSP output, etc.
 
-2️⃣ Why Do We Need Servlets?
+**2️⃣ Why Do We Need Servlets?**
 
 Static HTML cannot:
 
@@ -17,7 +17,7 @@ perform business logic
 
 Servlets allow dynamic content creation using Java code.
 
-3️⃣ Where Is a Servlet Present?
+**3️⃣ Where Is a Servlet Present?**
 
 Servlets run inside the Servlet Container (e.g., Tomcat’s Catalina).
 
@@ -35,7 +35,7 @@ loading classes
 
 Servlet → inside Servlet Container → inside Web Server (Tomcat)
 
-4️⃣ Where Is a Servlet Located in a Project?
+**4️⃣ Where Is a Servlet Located in a Project?**
 
 Typical project structure:
 
@@ -49,7 +49,7 @@ WEB-INF/
     classes/
     lib/
 
-5️⃣ Where Is a Servlet Deployed in Tomcat?
+**5️⃣ Where Is a Servlet Deployed in Tomcat?**
 
 When deployed as a WAR file:
 
@@ -58,52 +58,81 @@ tomcat/webapps/yourApp/
 
 Tomcat extracts your WAR and loads the servlets into Catalina, the servlet container.
 
-6️⃣ Basic Servlet Execution Flow
+**6️⃣ Basic Servlet Execution Flow**
 Client → HTTP Request → Tomcat → Servlet Container → Servlet → Response → Client
 
-7️⃣ Important Servlet Classes
+**7️⃣ Important Servlet Classes**
 Component	Description
 HttpServlet	Base class for all Servlets
 doGet()	Handles GET requests
 doPost()	Handles POST requests
 ServletRequest	Contains request data
 ServletResponse	Used to send response to client
-🏗️ Full Tomcat Internal Request Flow (Simplified)
-               Client (Browser)
-                       │
-                       ▼
-            Tomcat HTTP Server (8080)
-                       │
-                       ▼
-               Coyote Connector
-         (Converts HTTP → Tomcat Request)
-                       │
-                       ▼
-                Catalina Engine
-            (Main Servlet Container)
-                       │
-        ┌──────────────┼──────────────┐
-        ▼              ▼              ▼
-      Host           Realm        Valves/Filters
- (e.g., localhost)  (Security)    (Logging/Auth)
-        │
-        ▼
-              Context (Web Application)
-                   /myapp
-        │
-        ▼
-              Wrapper (Servlet Holder)
-        │
-        ▼
-           Servlet (doGet/doPost executes)
-        │
-        ▼
-           Response Generated (HTML/JSON/JSP)
-        │
-        ▼
-Coyote → Browser Output
 
-🔥 Tomcat Flow Explanation
+
+**🏗️ Full Tomcat Internal Request Flow (Simplified)**
+
+               ┌──────────────────────────┐
+               │        Client (Browser)   │
+               │  Sends HTTP Request       │
+               └─────────────┬────────────┘
+                             │
+                             ▼
+               ┌──────────────────────────┐
+               │     Tomcat HTTP Server   │
+               │ (Receives Request on 8080)│
+               └─────────────┬────────────┘
+                             │
+                             ▼
+               ┌──────────────────────────┐
+               │     Coyote Connector     │
+               │ (Converts HTTP → Servlet)│
+               └─────────────┬────────────┘
+                             │
+                             ▼
+               ┌──────────────────────────┐
+               │     Catalina Engine      │
+               │ (Main Servlet Container) │
+               └─────────────┬────────────┘
+                             │
+             ┌───────────────┼────────────────┐
+             ▼               ▼                ▼
+    ┌────────────────┐   ┌────────────────┐  ┌────────────────┐
+    │     Host       │   │     Realm      │  │   Valve/Filter │
+    │(e.g. localhost)│   │Auth, Security  │  │ Interceptors   │
+    └─────────┬──────┘   └────────────────┘  └──────┬─────────┘
+              │                                      │
+              ▼                                      ▼
+    ┌──────────────────────────┐            ┌────────────────────┐
+    │       Context            │            │   Filters / Valves │
+    │  (Your Web Application)  │            │ (Logs, Auth, etc.) │
+    └─────────┬────────────────┘            └─────────┬──────────┘
+              │                                        │
+              ▼                                        ▼
+    ┌──────────────────────────┐
+    │       Wrapper            │
+    │ (Holds Each Servlet)     │
+    └─────────┬────────────────┘
+              │
+              ▼
+    ┌──────────────────────────┐
+    │        Servlet           │
+    │ doGet() / doPost() runs  │
+    └─────────┬────────────────┘
+              │
+              ▼
+    ┌──────────────────────────┐
+    │  Response Generated      │
+    │   HTML / JSON / JSP etc. │
+    └─────────────┬────────────┘
+                  │
+                  ▼
+     ┌──────────────────────────┐
+     │      Browser Receives    │
+     │       Dynamic Output     │
+     └──────────────────────────┘
+
+**🔥 Tomcat Flow Explanation**
 1. Browser → Coyote Connector
 
 The browser sends an HTTP request to Tomcat (port 8080).
@@ -125,6 +154,6 @@ Security components like Realm and interceptors like Valves/Filters also run her
 
 Catalina runs the servlet’s doGet() or doPost(), generates a response, sends it back through Coyote, which converts it to HTTP, and finally the browser displays the output.
 
-⭐ Super-Short Summary
+**⭐ Super-Short Summary**
 Browser → Coyote → Catalina → Host → Context → Wrapper → Servlet
 Servlet → Response → Coyote → Browser
