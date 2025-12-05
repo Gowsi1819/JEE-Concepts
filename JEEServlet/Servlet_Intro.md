@@ -51,7 +51,9 @@ WEB-INF/
 
 **5️⃣ Where Is a Servlet Deployed in Tomcat?**
 
-When deployed as a WAR file:
+when we are saving the servlet class(.java file) the Tools(eclipse) will automatically convert it as .class file
+
+When deployed as a Project adding in Tomcate then it will save the .class file in webapp.
 
 tomcat/webapps/yourApp/
 
