@@ -3,11 +3,11 @@
 
 GET asks → POST acts
 
-URL for get
+**URL for get**
 
 [localhost:8083/JEE_Servlet1/CallingServlet?username=demo&password=demo%40123](http://localhost:8083/JEE_Servlet1/CallingServlet?username=demo&password=demo%40123)
 
-URL for post
+**URL for post**
 
 [localhost:8083/JEE_Servlet1/CallingServlet](http://localhost:8083/JEE_Servlet1/CallingServlet)
 
