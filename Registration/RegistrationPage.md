@@ -1,5 +1,5 @@
 **Diagram**
-<img width="136" height="104" alt="image" src="https://github.com/user-attachments/assets/175b4c8e-30f1-4f03-b226-e91f060fb38a" />
+<img width="536" height="504" alt="image" src="https://github.com/user-attachments/assets/175b4c8e-30f1-4f03-b226-e91f060fb38a" />
 
 
 **Explanation:**
