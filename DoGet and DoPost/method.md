@@ -49,3 +49,12 @@ URL for post
 - **Server State**:
     
     `doGet()` **does not change** server state, while `doPost()` **changes** server state.
+
+
+  If the method attribute is not specified in an HTML form, the default method is GET. When a request reaches the servlet, the container calls the service method of HttpServlet, which checks the HTTP method and internally dispatches the request to either doGet or doPost.
+
+
+  When you override doPost(), you are not removing service().
+The container calls service(), and service() internally calls doPost() for POST requests.
+
+
